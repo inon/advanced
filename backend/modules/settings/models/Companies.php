@@ -3,22 +3,22 @@
 namespace backend\modules\settings\models;
 
 use Yii;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "companies".
  *
- * @property string $company_id
+ * @property integer $company_id
  * @property string $company_name
  * @property string $company_email
  * @property string $company_address
  * @property string $company_created_date
  * @property string $company_status
+ * @property string $company_start_date
  *
  * @property Branches[] $branches
  * @property Departments[] $departments
  */
-class Companies extends ActiveRecord
+class Companies extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -34,7 +34,7 @@ class Companies extends ActiveRecord
     public function rules()
     {
         return [
-            [['company_created_date'], 'safe'],
+            [['company_created_date', 'company_start_date'], 'safe'],
             [['company_status'], 'string'],
             [['company_name', 'company_email', 'company_address'], 'string', 'max' => 255],
         ];
@@ -52,6 +52,7 @@ class Companies extends ActiveRecord
             'company_address' => 'Company Address',
             'company_created_date' => 'Company Created Date',
             'company_status' => 'Company Status',
+            'company_start_date' => 'Company Start Date',
         ];
     }
 
