@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'company_email:email',
             'company_address',
             'company_created_date',
+            'logo:image',
             'company_status',
         ],
     ]) ?>
