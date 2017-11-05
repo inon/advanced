@@ -84,6 +84,21 @@ class BranchesController extends Controller
         }
     }
 
+    public function actionList($id)
+    {
+        $branches = Branches::find()
+            ->where(['companies_company_id' => $id])
+            ->all();
+
+        if (count($branches) < 1) {
+            echo '<option>--</option>';
+        }
+
+        foreach($branches as $branch) {
+            echo "<option value='",$branch->branch_id."'>".$branch->branch_name."</option>";
+        }
+    }
+
     /**
      * Updates an existing Branches model.
      * If update is successful, the browser will be redirected to the 'view' page.

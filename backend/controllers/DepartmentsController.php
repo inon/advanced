@@ -65,7 +65,11 @@ class DepartmentsController extends Controller
     {
         $model = new Departments();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+
+            $model->department_created_date = date('Y-m-d h:m:s');
+            $model->save();
+
             return $this->redirect(['view', 'id' => $model->department_id]);
         } else {
             return $this->render('create', [
