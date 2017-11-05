@@ -1,4 +1,7 @@
 <?php
+
+use yii\swiftmailer\Mailer;
+
 $params = array_merge(
     require(__DIR__ . '/../../common/config/params.php'),
     require(__DIR__ . '/../../common/config/params-local.php'),
@@ -45,6 +48,10 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'mailer' => [
+            'class' => Mailer::class,
+            'useFileTransport' => false
+        ]
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
