@@ -76,7 +76,9 @@ class BranchesController extends Controller
                 return $this->redirect(['view', 'id' => $model->branch_id]);
             }
 
-            return $this->render('create', [
+            $method = Yii::$app->request->isAjax ? 'renderAjax' : 'render';
+
+            return $this->{$method}('create', [
                 'model' => $model,
             ]);
         } else {
